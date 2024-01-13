@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 # Importing Input File
-df=pd.read_excel('/content/drive/MyDrive/Colab Notebooks/imp_1.xlsx')
+df=pd.read_excel('input/data/file/path') #replace it with actual input file 
 #Allocating it into x and y format. X is for the samples(0,1,2,etc for different types) and y is for the impedance values
 X = df.iloc[0,1:51 ].values
 y = df.iloc[:,1:51].values
