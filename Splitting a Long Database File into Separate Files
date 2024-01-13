@@ -1,0 +1,23 @@
+import re
+
+def extract_and_save(file_path, start_pattern, end_pattern):
+    with open(file_path, 'r') as file:
+        content = file.read()
+
+    # Use regular expressions to find patterns
+    pattern = re.compile(f'{re.escape(start_pattern)}(.*?){re.escape(end_pattern)}', re.DOTALL)
+    matches = pattern.findall(content)
+
+    # Save each extracted content to individual files
+    for index, data_entry in enumerate(matches, start=1):
+        output_file_path = f'output_file_{index}.txt'
+        with open(output_file_path, 'w') as output_file:
+            output_file.write(data_entry)
+        print(f'Data Entry {index} saved to {output_file_path}')
+
+# Example usage:
+file_path = '/input/file/folder/path'  # Replace with the actual file path
+start_pattern = 'CDK     ' # Replace with the actual starting pattern
+end_pattern = '$$$$'  # Replace with the actual ending pattern
+
+extract_and_save(file_path, start_pattern, end_pattern)
